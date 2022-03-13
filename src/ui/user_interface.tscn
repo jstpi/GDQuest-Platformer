@@ -1,0 +1,76 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://start-assets/ui_theme.tres" type="Theme" id=1]
+[ext_resource path="res://src/ui/title.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/ui/change_scene_button.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/ui/quit_button.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/ui/retry_button.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/ui/user_interface.gd" type="Script" id=6]
+
+[node name="UserInterface" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -140.032
+margin_top = 26.6968
+margin_right = -26.0316
+margin_bottom = 57.6968
+text = "Score %s"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PauseOverlay" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.231373 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" parent="PauseOverlay" instance=ExtResource( 2 )]
+margin_left = -85.9438
+margin_top = 144.409
+margin_right = 91.0562
+margin_bottom = 175.409
+text = "Paused"
+
+[node name="PauseMenu" type="VBoxContainer" parent="PauseOverlay"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -91.0
+margin_top = -93.0
+margin_right = 91.0
+margin_bottom = 94.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RetryButton" parent="PauseOverlay/PauseMenu" instance=ExtResource( 5 )]
+margin_right = 182.0
+margin_bottom = 59.0
+
+[node name="ChangeSceneButton" parent="PauseOverlay/PauseMenu" instance=ExtResource( 3 )]
+margin_top = 63.0
+margin_right = 182.0
+margin_bottom = 123.0
+text = "Main Screen"
+next_scene_path = "res://src/screens/main.tscn"
+
+[node name="QuitButton" parent="PauseOverlay/PauseMenu" instance=ExtResource( 4 )]
+margin_top = 127.0
+margin_right = 182.0
+margin_bottom = 187.0
